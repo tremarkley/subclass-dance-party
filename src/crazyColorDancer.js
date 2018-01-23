@@ -1,6 +1,9 @@
 var CrazyColorDancer = function (top, left, timeBetweenSteps) {
-  this.$node = $('<div class="dancerHolder"><img class="moonwalk" src="./assets/images/moonwalk.gif" alt="moonwalker dude"></div>');
+  //this.$node = $('<div class="dancerHolder"><img class="moonwalk" src="./assets/images/moonwalk.gif" alt="moonwalker dude"></div>');
   ColorDancer.call(this, top, left, timeBetweenSteps, this.$node);
+  this.$node.addClass('dancerHolder');
+  this.$node.removeClass('dancer');
+  this.$node.append($('<img class="moonwalk" src="./assets/images/moonwalk.gif" alt="moonwalker dude">'));
   this.setPosition(top, left);
   this.move();
 };
