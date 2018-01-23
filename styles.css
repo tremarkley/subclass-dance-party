@@ -1,7 +1,9 @@
 body, html{
   height:100%;
+  overflow: hidden;
 }
 body{
+  /*height:90%*/
   margin: 0px;
   background-color:#444;
   background: url('./assets/images/disco.jpg') no-repeat center center fixed; 
@@ -25,9 +27,8 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
   position:absolute;
 }
 .powerRangerDancer, .moonwalk{
@@ -37,6 +38,11 @@ body, a:link, a:visited, a:active{
   left: -27px;
   bottom: 65px;
 }
+
+.powerRangerDancer {
+ position: fixed;
+}
+
 .dancerHolder{
   text-align: center;
   overflow: visible;
