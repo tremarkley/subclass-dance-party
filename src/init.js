@@ -27,6 +27,34 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
+    window.dancers.push(dancer);
+  });
+
+  $('.lineUpButton').on('click', function() {
+debugger
+    let top = $('body').height() * .5;
+    let increment = 1 / window.dancers.length * .5;
+    let multiplier = 0;
+    let isFirst = true;
+    counter = 0;
+    for (let i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].isMoving = false;
+      if (window.dancers.length % 2 !== 0 && isFirst) {
+        window.dancers[i].setPosition(top, $('body').width() * .5);
+        isFirst = false;
+      } else {
+        if (counter % 2 === 0) {
+          multiplier++;
+          let width = $('body').width() * .5 + $('body').width() * (increment * multiplier);
+          window.dancers[i].setPosition(top, width); 
+        } else {
+          let width = $('body').width() * .5 + $('body').width() * (-1 * increment * multiplier);
+          window.dancers[i].setPosition(top, width);
+        }
+        counter++;
+      }
+    }
   });
 });
 

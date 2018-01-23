@@ -6,11 +6,14 @@ var CrazyColorDancer = function (top, left, timeBetweenSteps) {
 CrazyColorDancer.prototype = Object.create(ColorDancer.prototype);
 
 CrazyColorDancer.prototype.move = function() {
-  var styleSettings = {
-    top: $('body').height() * Math.random(),
-    left: $('body').width() * Math.random()
-  };
-  this.$node.css(styleSettings);
+  if (this.isMoving) {
+    var styleSettings = {
+      top: $('body').height() * Math.random(),
+      left: $('body').width() * Math.random()
+    };
+    this.$node.css(styleSettings);
+  }
+  
   setTimeout(this.move.bind(this), 500);
 };
 
