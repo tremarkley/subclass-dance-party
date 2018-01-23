@@ -1,5 +1,7 @@
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
+var BlinkyDancer = function(top, left, timeBetweenSteps, node) {
   Dancer.call(this, top, left, timeBetweenSteps);
+  this.$node = $('<img class="powerRangerDancer" src="./assets/images/powerRanger.gif" alt="a colorful blinking power ranger">');
+  this.setPosition(top, left);
 };
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);

@@ -4,6 +4,11 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background: url('./assets/images/disco.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -24,4 +29,18 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+.powerRangerDancer, .moonwalk{
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+  left: -27px;
+  bottom: 65px;
+}
+.dancerHolder{
+  text-align: center;
+  overflow: visible;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
 }

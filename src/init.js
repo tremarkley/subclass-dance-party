@@ -43,6 +43,7 @@ $(document).ready(function() {
     counter = 0;
     for (let i = 0; i < window.dancers.length; i++) {
       window.dancers[i].isMoving = false;
+      window.dancers[i].$node.stop();
       if (window.dancers.length % 2 !== 0 && isFirst) {
         window.dancers[i].setPosition(top, $('body').width() * .5);
         isFirst = false;
@@ -60,4 +61,5 @@ $(document).ready(function() {
     }
   });
 });
+
 
