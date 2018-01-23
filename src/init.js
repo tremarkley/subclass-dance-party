@@ -32,11 +32,14 @@ $(document).ready(function() {
   });
 
   $('.lineUpButton').on('click', function() {
-debugger
     let top = $('body').height() * .5;
     let increment = 1 / window.dancers.length * .5;
     let multiplier = 0;
     let isFirst = true;
+    let offset = 0;
+    if (window.dancers.length % 2 === 0) {
+      offset = $('body').width() * (increment) * .5;
+    }
     counter = 0;
     for (let i = 0; i < window.dancers.length; i++) {
       window.dancers[i].isMoving = false;
@@ -46,10 +49,10 @@ debugger
       } else {
         if (counter % 2 === 0) {
           multiplier++;
-          let width = $('body').width() * .5 + $('body').width() * (increment * multiplier);
+          let width = $('body').width() * .5 + $('body').width() * (increment * multiplier) - offset;
           window.dancers[i].setPosition(top, width); 
         } else {
-          let width = $('body').width() * .5 + $('body').width() * (-1 * increment * multiplier);
+          let width = $('body').width() * .5 + $('body').width() * (-1 * increment * multiplier) + offset;
           window.dancers[i].setPosition(top, width);
         }
         counter++;
