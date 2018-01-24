@@ -19,6 +19,7 @@ CrazyColorDancer.prototype.move = function() {
         console.log('collision');
         this.isMoving = false;
         window.dancers[i].isMoving = false;
+        this.$node.find('img').attr('src', './assets/images/psy-moving.gif');
         break;
       } 
     }
