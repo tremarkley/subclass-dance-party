@@ -9,17 +9,18 @@ var CrazyColorDancer = function (top, left, timeBetweenSteps) {
 };
 
 CrazyColorDancer.prototype = Object.create(ColorDancer.prototype);
+CrazyColorDancer.prototype.constructor = CrazyColorDancer;
 
 CrazyColorDancer.prototype.move = function() {
   let nodePosition = getPosition(this.$node);
   for (let i = 0; i < window.dancers.length; i++) {
-    if (window.dancers[i] !== this) {
+    if (window.dancers[i] !== this && window.dancers[i].constructor === CrazyColorDancer) {
       let dancerPosition = getPosition(window.dancers[i].$node);
       if (compare(nodePosition[0], dancerPosition[0]) && compare(nodePosition[1], dancerPosition[1])) {
-        console.log('collision');
         this.isMoving = false;
         window.dancers[i].isMoving = false;
         this.$node.find('img').attr('src', './assets/images/psy-moving.gif');
+        window.dancers[i].$node.find('img').attr('src', './assets/images/psy-moving.gif');
         break;
       } 
     }
