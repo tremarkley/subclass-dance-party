@@ -24,7 +24,7 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 2000
     );
     $('body').append(dancer.$node);
 
@@ -37,28 +37,43 @@ $(document).ready(function() {
     let multiplier = 0;
     let isFirst = true;
     let offset = 0;
-    if (window.dancers.length % 2 === 0) {
-      offset = $('body').width() * (increment) * .5;
-    }
-    counter = 0;
-    for (let i = 0; i < window.dancers.length; i++) {
-      window.dancers[i].isMoving = false;
-      window.dancers[i].$node.stop();
-      if (window.dancers.length % 2 !== 0 && isFirst) {
-        window.dancers[i].setPosition(top, $('body').width() * .5);
-        isFirst = false;
-      } else {
-        if (counter % 2 === 0) {
-          multiplier++;
-          let width = $('body').width() * .5 + $('body').width() * (increment * multiplier) - offset;
-          window.dancers[i].setPosition(top, width); 
+    //set toggle functionality for line up
+    if (window.dancers[0].isMoving === true) {
+      if (window.dancers.length % 2 === 0) {
+        offset = $('body').width() * (increment) * .5;
+      }
+      counter = 0;
+      for (let i = 0; i < window.dancers.length; i++) {
+        window.dancers[i].isMoving = false;
+        window.dancers[i].$node.stop();
+        if (window.dancers.length % 2 !== 0 && isFirst) {
+          window.dancers[i].setPosition(top, $('body').width() * .5);
+          isFirst = false;
         } else {
-          let width = $('body').width() * .5 + $('body').width() * (-1 * increment * multiplier) + offset;
-          window.dancers[i].setPosition(top, width);
+          if (counter % 2 === 0) {
+            multiplier++;
+            let width = $('body').width() * .5 + $('body').width() * (increment * multiplier) - offset;
+            window.dancers[i].setPosition(top, width); 
+          } else {
+            let width = $('body').width() * .5 + $('body').width() * (-1 * increment * multiplier) + offset;
+            window.dancers[i].setPosition(top, width);
+          }
+          counter++;
         }
-        counter++;
+      }
+    } else {
+      for (var i = 0; i < window.dancers.length; i++) {
+        window.dancers[i].isMoving = true;
+        window.dancers[i].step();
       }
     }
+  });
+
+  $('.clearDancersButton').on('click', function() {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].$node.remove();
+    }
+    window.dancers = [];
   });
 });
 

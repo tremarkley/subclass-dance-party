@@ -16,7 +16,7 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton, .lineUpButton{
+.title, .addDancerButton, .lineUpButton, .button{
   padding:5px 12px;
   float:right;
 }
@@ -31,6 +31,7 @@ body, a:link, a:visited, a:active{
 .dancer{
   position:absolute;
 }
+
 .powerRangerDancer, .moonwalk{
   width: 10rem;
   height: 10rem;
@@ -40,7 +41,7 @@ body, a:link, a:visited, a:active{
 }
 
 .powerRangerDancer {
- position: fixed;
+  position: fixed;
 }
 
 .dancerHolder{
@@ -49,4 +50,19 @@ body, a:link, a:visited, a:active{
   width: 5rem;
   height: 5rem;
   position: absolute;
+}
+
+.Quadrant {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+}
+
+.Quadrant.one {
+  float: left;
+}
+
+.Quadrant.two, .Quadrant.three {
+  float: right;
 }

@@ -17,6 +17,7 @@ var Dancer = function(top, left, timeBetweenSteps, node) {
   this.setPosition(top, left);
 
   this.isMoving = true;
+  this.isBlinking = true;
 };
 
 Dancer.prototype.step = function() {
