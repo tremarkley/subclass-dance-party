@@ -30,7 +30,6 @@ CrazyColorDancer.prototype.move = function() {
       top: $('body').height() * Math.random(),
       left: $('body').width() * Math.random()
     };
-    //this.$node.css(styleSettings);
     this.$node.animate(styleSettings, 3000);
   }
   setTimeout(this.move.bind(this), 3000);
