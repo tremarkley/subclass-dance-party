@@ -1,5 +1,6 @@
 var CrazyColorDancer = function (top, left, timeBetweenSteps) {
   //this.$node = $('<div class="dancerHolder"><img class="moonwalk" src="./assets/images/moonwalk.gif" alt="moonwalker dude"></div>');
+  this.setTimeoutVar;
   ColorDancer.call(this, top, left, timeBetweenSteps, this.$node);
   this.$node.addClass('dancerHolder');
   this.$node.removeClass('dancer');
@@ -32,7 +33,7 @@ CrazyColorDancer.prototype.move = function() {
     };
     this.$node.animate(styleSettings, 3000);
   }
-  setTimeout(this.move.bind(this), 3000);
+  this.setTimeoutVar = setTimeout(this.move.bind(this), 3000);
 };
 
 var compare = function comparePositions( p1, p2 ) {

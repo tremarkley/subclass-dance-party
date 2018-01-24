@@ -32,19 +32,23 @@ $(document).ready(function() {
   });
 
   $('.lineUpButton').on('click', function() {
+    $(this).toggleClass('active');
     let top = $('body').height() * .5;
     let increment = 1 / window.dancers.length * .5;
     let multiplier = 0;
     let isFirst = true;
     let offset = 0;
     //set toggle functionality for line up
-    if (window.dancers[0].isMoving === true) {
+    if ($(this).hasClass('active')) {
       if (window.dancers.length % 2 === 0) {
         offset = $('body').width() * (increment) * .5;
       }
       counter = 0;
       for (let i = 0; i < window.dancers.length; i++) {
         window.dancers[i].isMoving = false;
+        if (window.dancers[i].setTimeoutVar !== undefined) {
+          clearTimeout(window.dancers[i].setTimeoutVar);
+        }
         window.dancers[i].$node.stop();
         if (window.dancers.length % 2 !== 0 && isFirst) {
           window.dancers[i].setPosition(top, $('body').width() * .5);
@@ -64,7 +68,9 @@ $(document).ready(function() {
     } else {
       for (var i = 0; i < window.dancers.length; i++) {
         window.dancers[i].isMoving = true;
-        window.dancers[i].step();
+        if (window.dancers[i].move) {
+          window.dancers[i].move();
+        } 
       }
     }
   });
