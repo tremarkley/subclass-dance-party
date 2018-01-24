@@ -1,5 +1,4 @@
 var BlinkyDancer = function(top, left, timeBetweenSteps, node) {
-debugger
   //this.$node = $('<img class="powerRangerDancer" src="./assets/images/powerRanger.gif" alt="a colorful blinking power ranger">');
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('powerRangerDancer');
