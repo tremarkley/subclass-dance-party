@@ -17,7 +17,6 @@ CrazyColorDancer.prototype.move = function() {
       let dancerPosition = getPosition(window.dancers[i].$node);
       if (compare(nodePosition[0], dancerPosition[0]) && compare(nodePosition[1], dancerPosition[1])) {
         console.log('collision');
-debugger
         this.isMoving = false;
         window.dancers[i].isMoving = false;
         break;
