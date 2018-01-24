@@ -11,6 +11,19 @@ var CrazyColorDancer = function (top, left, timeBetweenSteps) {
 CrazyColorDancer.prototype = Object.create(ColorDancer.prototype);
 
 CrazyColorDancer.prototype.move = function() {
+  let nodePosition = getPosition(this.$node);
+  for (let i = 0; i < window.dancers.length; i++) {
+    if (window.dancers[i] !== this) {
+      let dancerPosition = getPosition(window.dancers[i].$node);
+      if (compare(nodePosition[0], dancerPosition[0]) && compare(nodePosition[1], dancerPosition[1])) {
+        console.log('collision');
+debugger
+        this.isMoving = false;
+        window.dancers[i].isMoving = false;
+        break;
+      } 
+    }
+  }
   if (this.isMoving) {
     var styleSettings = {
       top: $('body').height() * Math.random(),
@@ -20,8 +33,21 @@ CrazyColorDancer.prototype.move = function() {
     this.$node.animate(styleSettings, 3000);
   }
   setTimeout(this.move.bind(this), 3000);
-  
 };
 
+var compare = function comparePositions( p1, p2 ) {
+  var r1, r2;
+  r1 = p1[0] < p2[0] ? p1 : p2;
+  r2 = p1[0] < p2[0] ? p2 : p1;
+  return r1[1] > r2[0] || r1[0] === r2[0];
+};
+
+var getPosition = function getPositions( elem ) {
+  var pos, width, height;
+  pos = $( elem ).position();
+  width = $( elem ).width();
+  height = $( elem ).height();
+  return [ [ pos.left, pos.left + width ], [ pos.top, pos.top + height ] ];
+};
 
 
