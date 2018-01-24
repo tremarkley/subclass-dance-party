@@ -13,6 +13,7 @@ CrazyColorDancer.prototype = Object.create(ColorDancer.prototype);
 CrazyColorDancer.prototype.constructor = CrazyColorDancer;
 
 CrazyColorDancer.prototype.move = function() {
+  //check for collisions
   let nodePosition = getPosition(this.$node);
   for (let i = 0; i < window.dancers.length; i++) {
     if (window.dancers[i] !== this && window.dancers[i].constructor === CrazyColorDancer) {
